@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "66706777793",
+    "project_id": "foodie-app-29a40",
+    "storage_bucket": "foodie-app-29a40.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:66706777793:android:c119029ee4fff37bb0d640",
+        "android_client_info": {
+          "package_name": "com.example.foodpanda_frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH-xAaCzbu1hZh4HT24-9xYPHAjaLXapQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,13 @@
+import 'package:get/get.dart';
+
+class HomeController extends GetxController {
+  // Define any reactive variables if needed
+  var selectedCategory = ''.obs;
+
+  // Method for navigation to the menu screen
+  void navigateToMenu() {
+    // Get.to(() => MenuScreen());
+  }
+
+  // Add any other methods that manage data or state here
+}

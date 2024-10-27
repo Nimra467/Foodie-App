@@ -12,7 +12,16 @@ class AuthController extends GetxController {
   @override
   void onInit() {
     _firebaseUser.bindStream(auth.authStateChanges());
+    ever(_firebaseUser, _setInitialScreen);
     super.onInit();
+  }
+
+  void _setInitialScreen(User? user) {
+    if (user == null) {
+      Get.offAllNamed('/login');
+    } else {
+      Get.offAllNamed('/main');
+    }
   }
 
   // Sign up function
@@ -20,10 +29,10 @@ class AuthController extends GetxController {
     User? user = await _authService.signUp(email, password);
     if (user != null) {
       Get.snackbar('Success', 'Account created successfully',
-          colorText: Color.fromARGB(0, 255, 255, 255));
+          colorText: Colors.white);
     } else {
       Get.snackbar('Error', 'Could not create account',
-          colorText: Color.fromARGB(0, 255, 255, 255));
+          colorText: Colors.white);
     }
   }
 
@@ -32,10 +41,10 @@ class AuthController extends GetxController {
     User? user = await _authService.signIn(email, password);
     if (user != null) {
       Get.snackbar('Success', 'Logged in successfully',
-          colorText: Color.fromARGB(0, 255, 255, 255));
+          colorText: Colors.white);
+      Get.offAllNamed('/main');
     } else {
-      Get.snackbar('Error', 'Invalid credentials',
-          colorText: Color.fromARGB(0, 255, 255, 255));
+      Get.snackbar('Error', 'Invalid credentials', colorText: Colors.white);
     }
   }
 

@@ -1,14 +1,19 @@
-// main.dart
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:foodpanda_frontend/services/auth_service.dart';
 import 'package:foodpanda_frontend/views/login_Screen.dart';
+import 'package:foodpanda_frontend/views/mainscreen.dart';
+import 'package:foodpanda_frontend/views/signup_screen.dart';
 import 'package:get/get.dart';
+import 'controllers/auth_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  Get.put(AuthService());
+
+  // Initialize AuthController here
+  Get.put(AuthController());
 
   runApp(MyApp());
 }
@@ -23,7 +28,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.black,
       ),
-      home: LoginScreen(), // Set the initial screen
+      initialRoute:
+          FirebaseAuth.instance.currentUser == null ? '/login' : '/main',
+      getPages: [
+        GetPage(name: '/login', page: () => LoginScreen()),
+        GetPage(name: '/signup', page: () => SignUpScreen()),
+        GetPage(name: '/main', page: () => NavBar()),
+      ],
     );
   }
 }

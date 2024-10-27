@@ -1,12 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:foodpanda_frontend/components/custom_background.dart';
-import 'package:foodpanda_frontend/services/auth_service.dart';
+import 'package:foodpanda_frontend/controllers/auth_controller.dart';
 import 'package:foodpanda_frontend/views/signup_screen.dart';
 import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
-  final AuthService _authService = Get.put(AuthService());
+  final AuthController authController = Get.put(AuthController());
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -107,19 +106,12 @@ class LoginScreen extends StatelessWidget {
                           String email = emailController.text;
                           String password = passwordController.text;
 
-                          // Use AuthService for login
-                          User? user =
-                              await _authService.signIn(email, password);
-
-                          if (user != null) {
-                            Get.snackbar('Success', 'Logged in successfully',
-                                colorText: Color.fromARGB(0, 255, 255, 255));
-                            // Navigate to home screen or dashboard
-                          }
+                          // Call the login function from AuthController
+                          await AuthController.instance.login(email, password);
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(
-                              255, 7, 53, 132), // Background color
+                          backgroundColor:
+                              const Color.fromARGB(255, 7, 53, 132),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),

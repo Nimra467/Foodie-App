@@ -46,7 +46,7 @@ class NavBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildNavItem(Icons.home_outlined, "Setting", 0),
+              _buildNavItem(Icons.home_outlined, "Home", 0),
               _buildNavItem(Icons.search, "Browse", 1),
               _buildNavItem(Icons.shopping_cart_outlined, "Carts", 2),
               _buildNavItem(Icons.notes_sharp, "Orders", 3),

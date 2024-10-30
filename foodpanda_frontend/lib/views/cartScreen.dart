@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodpanda_frontend/components/custom_background.dart';
 import 'package:foodpanda_frontend/controllers/cartController.dart';
+import 'package:foodpanda_frontend/views/track_order_screen.dart';
 import 'package:get/get.dart';
 
 class CartScreen extends StatelessWidget {
@@ -14,14 +15,12 @@ class CartScreen extends StatelessWidget {
       body: Stack(
         children: [
           CustomBackground(
-            child: // Your custom background widget
-                Padding(
+            child: Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: Obx(() {
                 if (cartController.cartItems.isEmpty) {
                   return Center(child: Text('Your cart is empty'));
                 }
-
                 return ListView.builder(
                   itemCount: cartController.cartItems.length,
                   itemBuilder: (context, index) {
@@ -43,12 +42,25 @@ class CartScreen extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         subtitle: Text('\$${item['price'].toStringAsFixed(2)}'),
-                        trailing: IconButton(
-                          icon: Icon(Icons.remove_circle_outline,
-                              color: Colors.red),
-                          onPressed: () {
-                            cartController.removeFromCart(item);
-                          },
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.remove_circle_outline,
+                                  color: Colors.red),
+                              onPressed: () {
+                                cartController.decreaseQuantity(item);
+                              },
+                            ),
+                            Text('${item['quantity']}'),
+                            IconButton(
+                              icon: Icon(Icons.add_circle_outline,
+                                  color: Colors.green),
+                              onPressed: () {
+                                cartController.increaseQuantity(item);
+                              },
+                            ),
+                          ],
                         ),
                       ),
                     );
@@ -80,7 +92,9 @@ class CartScreen extends StatelessWidget {
               onPressed: () {
                 // Handle checkout action
                 Get.snackbar('Checkout', 'Proceeding to checkout',
+                    colorText: Colors.white,
                     snackPosition: SnackPosition.BOTTOM);
+                Get.to(TrackOrderScreen());
               },
               child: Text(
                 'Checkout',

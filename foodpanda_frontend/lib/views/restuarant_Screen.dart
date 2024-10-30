@@ -75,10 +75,9 @@ class RestaurantPage extends StatelessWidget {
                     onPressed: () {
                       cartController.addToCart(item);
                       Get.snackbar(
-                        'Added to Cart',
-                        '${item['name']} added to cart',
-                        snackPosition: SnackPosition.BOTTOM,
-                      );
+                          'Added to Cart', '${item['name']} added to cart',
+                          snackPosition: SnackPosition.BOTTOM,
+                          colorText: Colors.white);
                     },
                   ),
                 ),

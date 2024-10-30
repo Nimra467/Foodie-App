@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:foodpanda_frontend/models/lat_lng.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -19,16 +20,15 @@ class MapLauncher {
   }
 
   static Future<void> openGoogleMapsHomePage() async {
-  final uri = Uri(
-    scheme: "https",
-    host: "www.google.com",
-    path: "/maps",
-  );
-  if (await canLaunchUrl(uri)) {
-    await launchUrl(uri);
-  } else {
-    log('Unable to open Google Maps home page.');
+    final uri = Uri(
+      scheme: "https",
+      host: "www.google.com",
+      path: "/maps",
+    );
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      log('Unable to open Google Maps home page.');
+    }
   }
-}
-
 }

@@ -122,12 +122,11 @@ class SignUpScreen extends StatelessWidget {
                             if (user != null) {
                               Get.snackbar(
                                   'Success', 'Account created successfully',
-                                  colorText: Color.fromARGB(0, 255, 255, 255));
-                          
+                                  colorText: Colors.white);
                             }
                           } else {
                             Get.snackbar('Error', 'Passwords do not match',
-                                colorText: Color.fromARGB(0, 255, 255, 255));
+                                colorText: Colors.white);
                           }
                         },
                         style: ElevatedButton.styleFrom(

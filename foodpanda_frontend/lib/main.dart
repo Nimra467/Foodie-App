@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:foodpanda_frontend/controllers/cartController.dart';
 import 'package:foodpanda_frontend/services/auth_service.dart';
 import 'package:foodpanda_frontend/views/login_Screen.dart';
 import 'package:foodpanda_frontend/views/mainscreen.dart';
@@ -14,7 +15,7 @@ void main() async {
 
   // Initialize AuthController here
   Get.put(AuthController());
-
+  Get.put(CartController());
   runApp(MyApp());
 }
 

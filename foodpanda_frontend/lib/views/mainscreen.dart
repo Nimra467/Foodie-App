@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:foodpanda_frontend/controllers/nav_controller.dart';
+import 'package:foodpanda_frontend/views/account_screen.dart';
 import 'package:foodpanda_frontend/views/home_screen.dart';
-import 'package:foodpanda_frontend/views/order_detail.dart';
+import 'package:foodpanda_frontend/views/cartScreen.dart';
 import 'package:get/get.dart';
 
 class NavBar extends StatelessWidget {
@@ -11,9 +12,9 @@ class NavBar extends StatelessWidget {
   final List<Widget> widgetList = [
     HomeScreen(),
     Center(child: Text("Browse Page")),
-    OrderDetailsScreen(),
-    Center(child: Text("Orders Page")),
-    Center(child: Text("Account Page")),
+    CartScreen(),
+    Center(child: Text("Browse Page")),
+    AccountScreen()
   ];
 
   @override

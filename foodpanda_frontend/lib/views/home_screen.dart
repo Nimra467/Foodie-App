@@ -4,6 +4,7 @@ import 'package:foodpanda_frontend/components/custom_background.dart';
 import 'package:foodpanda_frontend/components/details.dart';
 import 'package:foodpanda_frontend/components/different_containers.dart';
 import 'package:foodpanda_frontend/controllers/home_controller';
+import 'package:foodpanda_frontend/views/restuarant_Screen.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -33,7 +34,15 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(height: 10),
                     _buildSectionTitle('Fastest near you'),
                     SizedBox(height: 10),
-                    Image.asset('assets/images/Card.png'),
+                    GestureDetector(
+                      onTap: () {
+                        // Navigate to the RestaurantPage with the restaurant ID
+                        Get.to(() => RestaurantPage(), arguments: {
+                          'restaurantId': '60c72b2f9b1d8b3b4c8e4d34'
+                        });
+                      },
+                      child: Image.asset('assets/images/Card.png'),
+                    )
                   ],
                 ),
               ),

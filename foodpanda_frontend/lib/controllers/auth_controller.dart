@@ -49,8 +49,8 @@ class AuthController extends GetxController {
   }
 
   // Logout
-  void signOut() {
-    _authService.signOut();
-    Get.offAllNamed('/login');
+  Future<void> logout() async {
+    await _authService.signOut();
+    Get.offAllNamed('/login'); // Redirect to login screen after logout
   }
 }
